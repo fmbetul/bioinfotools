@@ -2,7 +2,7 @@ Package: bioinfotools
 Type: Package
 Title: Bioinformatics Tools
 Version: 1.0.0
-Author: F. M. Betul Erol
+Author: F. M. Betul Erol, Hannah Glover
 Maintainer: F. M. Betul Erol <fmab_erol@hotmail.com>
 Description: This package provides essential bioinformatics tools for the analysis and visualization of single-cell RNA sequencing data.
 Imports: 

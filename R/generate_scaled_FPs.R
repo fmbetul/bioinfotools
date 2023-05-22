@@ -1,5 +1,23 @@
-
-
+#' Generate Scaled Feature Plots
+#'
+#' This function generates feature plots for a list of genes in multiple Seurat objects,
+#' scaling the plots by the maximum value of each gene across all objects.
+#' The generated plots are then saved as PDF files in an output directory.
+#'
+#' @param seurat_objects A named list of Seurat objects.
+#' @param genes A character vector of gene names for which to generate feature plots.
+#' @param filename The filename (without extension) to use for the output PDF files.
+#' @param seperate A boolean indicating whether to save a separate PDF for each Seurat object.
+#'                Default is TRUE.
+#'
+#' @return This function does not return a value. It generates PDF files with feature plots.
+#'
+#' @importFrom Seurat DefaultAssay FeaturePlot FetchData
+#' @importFrom ggplot2 scale_color_gradientn element_blank labs ggtitle
+#' @importFrom ggpubr ggarrange
+#' @importFrom grDevices pdf dev.off
+#'
+#' @export
 
 
 generate_scaled_FPs <- function(seurat_objects, genes, filename, seperate = T) {
@@ -63,9 +81,9 @@ generate_scaled_FPs <- function(seurat_objects, genes, filename, seperate = T) {
     }else if(seperate == F){
       if(seurat_obj_name == names(seurat_objects)[[1]]){
         CombinePlots = list()
-        CombinePlots[[seurat_obj_name]] = p + plot_annotation(title = seurat_obj_name)
+        CombinePlots[[seurat_obj_name]] = p + ggtitle(seurat_obj_name)
       }else{
-        CombinePlots[[seurat_obj_name]] = p + plot_annotation(title = seurat_obj_name)
+        CombinePlots[[seurat_obj_name]] = p + ggtitle(seurat_obj_name)
       }
 
     }
