@@ -18,6 +18,7 @@
 #' @importFrom utils write.csv
 #' @importFrom Seurat DimPlot PercentageFeatureSet VlnPlot FindAllMarkers DoHeatmap
 #' @importFrom dplyr %>%, group_by, slice_max, top_n
+#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -54,12 +55,12 @@ save_qc_file <- function(SeuFile, version = "v1.0.0", qc.plot = TRUE, Heatmap = 
     markers <- FindAllMarkers(SeuFile, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 
     markers %>%
-      group_by(cluster) %>%
-      slice_max(n = 10, order_by = avg_log2FC)
+      dplyr::group_by(.data$cluster) %>%
+      dplyr::slice_max(n = 10, order_by = .data$avg_log2FC)
 
     markers %>%
-      group_by(cluster) %>%
-      top_n(n = 10, wt = avg_log2FC) -> top10
+      dplyr::group_by(.data$cluster) %>%
+      dplyr::top_n(n = 10, wt = .data$avg_log2FC) -> top10
 
     hm <- DoHeatmap(SeuFile, features = top10$gene)
     print(hm)
