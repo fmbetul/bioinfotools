@@ -22,7 +22,7 @@
 
 plot_cells_from_integrated <- function(integrated, ClusterName, sample){
 
-  sample_name <- as.character(substitute(dest_SeuFile))
+  sample_name <- as.character(substitute(sample))
 
   # Get the cell barcodes for the selected cluster in integrated
   cell.barcodes <- rownames(subset(integrated@meta.data, integrated@meta.data$celltype == ClusterName))

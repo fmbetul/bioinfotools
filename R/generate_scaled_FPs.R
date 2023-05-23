@@ -89,7 +89,7 @@ generate_scaled_FPs <- function(seurat_objects, genes, filename, seperate = T) {
     }
   }
   if(seperate == F){
-    pdf_filename <- paste0("output/", filename, "_FeaturePlots.pdf")
+    pdf_filename <- paste0("output/", filename, "_scaledFPs.pdf")
     pdf(file = pdf_filename, width = 3.75*setncol, height = 3*setnrow)
     print(CombinePlots)
     dev.off()
