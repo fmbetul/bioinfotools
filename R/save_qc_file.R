@@ -71,7 +71,7 @@ save_qc_file <- function(SeuFile, version = "v1.0.0", qc.plot = TRUE, Heatmap = 
 
 
   if(csv == TRUE){
-    write.csv(top10, file = paste0("output/", Filename, "_Top10MarkersPerCluster_", version, ".csv"))
+    write.csv(top10, file = paste0("output/", Filename, "_MarkersPerCluster_top10_", version, ".csv"))
     write.csv(markers, file = paste0("output/", Filename, "_MarkersPerCluster_", version, ".csv"))
   }
 
