@@ -4,7 +4,12 @@
 \alias{generate_scaled_FPs}
 \title{Generate Scaled Feature Plots}
 \usage{
-generate_scaled_FPs(seurat_objects, genes, filename, seperate = T)
+generate_scaled_FPs(
+  seurat_objects,
+  genes,
+  filename = as.character(Sys.Date()),
+  separate = F
+)
 }
 \arguments{
 \item{seurat_objects}{A named list of Seurat objects.}
@@ -13,7 +18,7 @@ generate_scaled_FPs(seurat_objects, genes, filename, seperate = T)
 
 \item{filename}{The filename (without extension) to use for the output PDF files.}
 
-\item{seperate}{A boolean indicating whether to save a separate PDF for each Seurat object.
+\item{separate}{A boolean indicating whether to save a separate PDF for each Seurat object.
 Default is TRUE.}
 }
 \value{
